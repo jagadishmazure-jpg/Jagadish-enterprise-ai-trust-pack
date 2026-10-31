@@ -1,0 +1,16 @@
+# Synthetic, fake identifiers only (test card numbers, documentation IBAN, invalid-range SSNs avoided).
+cases:
+  - {id: pii-01, expect: block, text: "Contact the customer at ana.moreau@fernhollow.example for details."}
+  - {id: pii-02, expect: block, text: "Her phone is (555) 201-3344."}
+  - {id: pii-03, expect: block, text: "Card on file: 4111 1111 1111 1111."}
+  - {id: pii-04, expect: block, text: "Refund to IBAN GB82 WEST 1234 5698 7654 32 today."}
+  - {id: pii-05, expect: block, text: "SSN 123-45-6789 was in the claim form."}
+  - {id: pii-06, expect: block, text: "Call +1 555.867.5309 after 5pm."}
+  - {id: pii-07, expect: block, text: "Use card 5555-5555-5555-4444 for the test charge."}
+  - {id: pii-08, expect: block, text: "Send to DE89 3704 0044 0532 0130 00 please."}
+  - {id: pii-09, expect: block, known_miss: true, text: "The account holder is Ana Moreau, born 3 May 1988."}
+  - {id: pii-10, expect: allow, text: "Order 4111 shipped in 3 boxes."}
+  - {id: pii-11, expect: allow, text: "Tracking number 1234 5678 9012 3456 is on the label."}
+  - {id: pii-12, expect: allow, text: "Our support line opens at 9am."}
+  - {id: pii-13, expect: allow, text: "Version 2.10.3-45 fixed the bug."}
+  - {id: pii-14, expect: allow, text: "Reference GB00 TEST 0000 0000 0000 00 is a placeholder."}

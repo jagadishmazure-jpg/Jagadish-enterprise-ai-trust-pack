@@ -1,0 +1,8 @@
+# guardrails v3
+version: 3
+input:
+  block_patterns: [ignore previous instructions, reveal your system prompt, developer mode]
+  max_chars: 8000
+output:
+  pii_redaction: [email, phone, iban, us_ssn]
+  block_on_system_prompt_echo: true

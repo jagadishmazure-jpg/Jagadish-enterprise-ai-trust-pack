@@ -1,0 +1,4 @@
+name: tabletop-03 wrong refund advice sent to users of two tenants
+kind: harmful_output
+tenants_affected: 2
+timeline: {detect: 0, contain: 3, notify: 30, rca: 110}

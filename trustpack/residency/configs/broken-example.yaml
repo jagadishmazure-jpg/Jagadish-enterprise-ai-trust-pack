@@ -1,0 +1,14 @@
+# Deliberately misconfigured, so the check has something to catch. Fictional tenant.
+tenant: pellucid-insure
+boundary: {scope: data_zone, value: EU}
+allowed_regions: [swedencentral, eastus2]
+consent: {cross_region_fallback: false}
+data_classes:
+  prompts:    {region: swedencentral}
+  outputs:    {region: swedencentral}
+  logs:       {region: eastus2}
+  embeddings: {region: swedencentral}
+  backups:    {region: swedencentral, replica_region: uksouth}
+model_deployments:
+  - {name: chat-main, sku: DataZoneStandard, region: swedencentral, role: primary}
+  - {name: chat-spare, sku: GlobalStandard, region: francecentral, role: fallback}

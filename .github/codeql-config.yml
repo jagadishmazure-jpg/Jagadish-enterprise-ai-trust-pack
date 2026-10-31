@@ -1,0 +1,5 @@
+name: trustpack-codeql
+queries:
+  - uses: security-and-quality
+paths-ignore:
+  - docs/trust-portal

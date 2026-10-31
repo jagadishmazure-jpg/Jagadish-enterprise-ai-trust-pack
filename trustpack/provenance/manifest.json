@@ -1,0 +1,30 @@
+{
+  "release": "v1.4",
+  "date": "2026-10-15",
+  "components": {
+    "base_model": {
+      "source": "vendor",
+      "version": "2026-06-01",
+      "path": "trustpack/provenance/artifacts/base_model.json",
+      "sha256": "b90f55ac377f11cf49bb1db872e9deb853f0e44a318f3af155f645e6f85ff489"
+    },
+    "fine_tune": {
+      "source": "in-house",
+      "version": "ft-07",
+      "path": "trustpack/provenance/artifacts/fine_tune.json",
+      "sha256": "729a048ad8a44d8423688591e4dbbe81509bcca3fcadfd1910aea2d16b1a0c59"
+    },
+    "prompt_template": {
+      "source": "in-house",
+      "version": "v12",
+      "path": "trustpack/provenance/artifacts/prompt_template.txt",
+      "sha256": "9e18bb678914c94e86260181f0403e0cdf93ec2f8f01789d6c1ada9932abfc39"
+    },
+    "guardrails": {
+      "source": "in-house",
+      "version": "v3",
+      "path": "trustpack/provenance/artifacts/guardrails.yaml",
+      "sha256": "1a7cff0d7a31f4d6367ea8ab049b5261f383cbfc3e75c507c4fa6dac044ba7e8"
+    }
+  }
+}

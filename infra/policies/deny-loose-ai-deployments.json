@@ -1,0 +1,38 @@
+{
+  "displayName": "Deny Microsoft Foundry deployment types that process data outside the residency boundary",
+  "mode": "All",
+  "parameters": {
+    "deniedSkus": {
+      "type": "Array",
+      "metadata": {
+        "displayName": "Denied deployment SKUs"
+      }
+    },
+    "effect": {
+      "type": "String",
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Deny"
+    }
+  },
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.CognitiveServices/accounts/deployments"
+        },
+        {
+          "field": "Microsoft.CognitiveServices/accounts/deployments/sku.name",
+          "in": "[parameters('deniedSkus')]"
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  }
+}

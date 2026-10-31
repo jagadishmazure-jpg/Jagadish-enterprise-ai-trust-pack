@@ -1,0 +1,18 @@
+# Template, not certified. Per data type: may it ever reach a training or tuning corpus?
+# "never"  = blocked at the gateway, no override.
+# "opt_in" = blocked unless the tenant has a live, written opt-in for that data type.
+version: 3
+data_types:
+  prompts:          {training: never,  note: "Customer prompts are used for inference only."}
+  outputs:          {training: never,  note: "Model outputs are returned to the customer and logged per retention."}
+  files_embeddings: {training: never,  note: "Uploaded files and their embeddings stay in the tenant index."}
+  telemetry:        {training: never,  note: "Latency and token counts only; no content."}
+  feedback:         {training: opt_in, note: "Thumbs-up/down with the rated text, only if the tenant opts in."}
+provider_request:
+  # Outbound calls must carry these settings so the model host does not keep content.
+  required: {store: false}
+destinations:
+  inference: allowed
+  evaluation_private: allowed     # tenant's own eval set, never leaves the tenant
+  training_corpus: gated
+  analytics_content: denied

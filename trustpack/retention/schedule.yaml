@@ -1,0 +1,11 @@
+# Template, not certified. Retention per data type, in days. null = kept until the customer deletes it.
+version: 2
+deletion_sla_days: 30          # a verified delete request must finish inside this window
+schedule:
+  prompts:    {days: 30,   store: prompt_log}
+  outputs:    {days: 30,   store: prompt_log}
+  caches:     {days: 1,    store: cache}
+  traces:     {days: 14,   store: traces}
+  embeddings: {days: null, store: vector_index}
+  backups:    {days: 35,   store: backups, note: "Immutable; deleted data ages out within 35 days."}
+  audit_logs: {days: 365,  store: audit, note: "Holds request metadata only, never content."}

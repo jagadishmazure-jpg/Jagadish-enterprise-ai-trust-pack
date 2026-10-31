@@ -1,0 +1,1 @@
+{"component": "fine_tune", "id": "ft-07", "base": "vendor-chat-model@2026-06-01", "training_set_sha256": "synthetic-dataset-v4", "epochs": 3, "note": "Synthetic, fictional fine-tune record."}

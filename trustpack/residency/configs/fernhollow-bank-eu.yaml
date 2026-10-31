@@ -1,0 +1,15 @@
+# Fictional EU customer. Template, not certified.
+tenant: fernhollow-bank
+boundary: {scope: data_zone, value: EU}
+allowed_regions: [swedencentral, swedensouth, francecentral]
+consent: {cross_region_fallback: false}
+data_classes:
+  prompts:    {region: swedencentral, service: cosmos-db}
+  outputs:    {region: swedencentral, service: cosmos-db}
+  logs:       {region: swedencentral, service: log-analytics}
+  embeddings: {region: swedencentral, service: ai-search}
+  caches:     {region: swedencentral, service: redis}
+  backups:    {region: swedencentral, replica_region: swedensouth, service: storage-grs}
+model_deployments:
+  - {name: chat-main, sku: DataZoneStandard, region: swedencentral, role: primary}
+  - {name: chat-spare, sku: DataZoneStandard, region: swedencentral, role: fallback}

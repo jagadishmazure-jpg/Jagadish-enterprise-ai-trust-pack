@@ -1,0 +1,4 @@
+name: tabletop-04 prompt v12 regression, notice sent late (kept failing on purpose)
+kind: model_regression
+tenants_affected: 1
+timeline: {detect: 0, contain: 30, notify: 140, rca: 200}

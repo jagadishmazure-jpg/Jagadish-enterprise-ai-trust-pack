@@ -1,0 +1,60 @@
+# The nine buyer questions (paraphrased) and where this repo keeps the evidence.
+questions:
+  - id: Q1
+    title: Data residency
+    ask: Where are prompts, logs and embeddings stored and processed?
+    module: trustpack/residency
+    evidence: [trustpack/residency/configs/fernhollow-bank-eu.yaml, trustpack/residency/check.py,
+               infra/policies/deny-loose-ai-deployments.json, infra/terraform/main.tf, infra/bicep/main.bicep,
+               trustpack/trust_pack/templates/dpa.md]
+    command: python -m trustpack residency
+  - id: Q2
+    title: Training on customer data
+    ask: Will our data train your models or anyone else's?
+    module: trustpack/data_use
+    evidence: [trustpack/data_use/policy.yaml, trustpack/data_use/gateway.py]
+    command: python -m trustpack data-use
+  - id: Q3
+    title: Subprocessors
+    ask: Who else touches our data, for what, and where?
+    module: trustpack/subprocessors
+    evidence: [trustpack/subprocessors/registry.yaml, trustpack/subprocessors/registry.py]
+    command: python -m trustpack subprocessors
+  - id: Q4
+    title: Model provenance
+    ask: Which model and version runs in production, and from whom?
+    module: trustpack/provenance
+    evidence: [trustpack/provenance/manifest.json, trustpack/provenance/CHANGELOG.md,
+               trustpack/trust_pack/templates/model_card.md]
+    command: python -m trustpack provenance
+  - id: Q5
+    title: Retention and deletion
+    ask: How long do you keep our data, and can you prove it is gone?
+    module: trustpack/retention
+    evidence: [trustpack/retention/schedule.yaml, trustpack/retention/engine.py]
+    command: python -m trustpack retention
+  - id: Q6
+    title: Access and isolation
+    ask: Can other customers or your staff see our data?
+    module: trustpack/isolation
+    evidence: [trustpack/isolation/tenancy.py, trustpack/isolation/jit.py]
+    command: python -m trustpack isolation
+  - id: Q7
+    title: Incidents and SLAs
+    ask: What happens when something goes wrong, and when do we hear?
+    module: trustpack/incidents
+    evidence: [trustpack/incidents/runbooks.yaml, trustpack/incidents/engine.py, trustpack/incidents/scenarios]
+    command: python -m trustpack tabletop
+  - id: Q8
+    title: AI security testing
+    ask: How do you test for prompt injection and data leakage?
+    module: trustpack/security_tests
+    evidence: [trustpack/security_tests/cases, trustpack/security_tests/hooks.py,
+               trustpack/security_tests/pentest_template.md]
+    command: python -m trustpack security
+  - id: Q9
+    title: The trust pack
+    ask: Can you send your security documentation before the questionnaire arrives?
+    module: trustpack/trust_pack
+    evidence: [trustpack/trust_pack/mappings.yaml, trustpack/trust_pack/templates, docs/trust-portal/index.html]
+    command: python -m trustpack portal

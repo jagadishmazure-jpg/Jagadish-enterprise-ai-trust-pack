@@ -1,0 +1,41 @@
+# Template, not certified. AI-specific incident runbooks. Order: detect -> contain -> notify -> RCA.
+runbooks:
+  pii_in_output:
+    title: Personal data in a model output
+    personal_data: true
+    default_severity: SEV2
+    detect: [output PII scanner hit, customer report, canary token seen in output]
+    contain: [switch tenant to strict output redaction, purge affected cache entries, freeze prompt template version]
+    rca: [trace the retrieval chunk or prompt that carried the PII, check isolation canaries, add a regression test]
+    notify: [customer security contact, customer DPO (personal data), internal privacy lead]
+  harmful_output:
+    title: Harmful or wrong advice sent to an end user
+    personal_data: false
+    default_severity: SEV3
+    detect: [content-safety flag, thumbs-down spike, customer escalation]
+    contain: [tighten content filter, route topic to human review, roll back guardrails version]
+    rca: [replay the conversation offline, find the guardrail gap, add the case to the eval set]
+    notify: [customer product owner, internal AI risk owner]
+  injection_exfiltration:
+    title: Prompt injection that pulled data out through a tool or link
+    personal_data: true
+    default_severity: SEV1
+    detect: [egress allow-list violation, tool call to unknown domain, injection classifier hit]
+    contain: [disable the affected tool, revoke tool tokens, block the source document, rotate keys]
+    rca: [identify the injected source, list data reachable by the tool, add the payload to the injection suite]
+    notify: [customer security contact, customer DPO (personal data), internal CISO]
+  model_regression:
+    title: Quality or safety regression after a model or prompt change
+    personal_data: false
+    default_severity: SEV3
+    detect: [eval gate drift alert, provenance manifest change, error-rate rise]
+    contain: [roll back to last pinned release in the provenance manifest]
+    rca: [diff the manifests, re-run the eval suite on both releases, record the cause in the change log]
+    notify: [customer product owner]
+# Hours from awareness. Contract windows are the fictional MSA defaults; regulator window applies to
+# personal-data breaches (the controller's 72-hour clock under GDPR Art. 33; we notify the controller first).
+windows:
+  contain_hours:   {SEV1: 1,  SEV2: 4,  SEV3: 24,  SEV4: 72}
+  contract_hours:  {SEV1: 24, SEV2: 48, SEV3: 120, SEV4: null}
+  rca_hours:       {SEV1: 120, SEV2: 120, SEV3: 240, SEV4: null}
+  regulator_hours: 72

@@ -1,0 +1,30 @@
+{
+  "release": "v1.2",
+  "date": "2026-07-20",
+  "components": {
+    "base_model": {
+      "source": "vendor",
+      "version": "2026-06-01",
+      "path": "trustpack/provenance/artifacts/base_model.json",
+      "sha256": "b90f55ac377f11cf49bb1db872e9deb853f0e44a318f3af155f645e6f85ff489"
+    },
+    "fine_tune": {
+      "source": "in-house",
+      "version": "ft-06",
+      "path": "trustpack/provenance/artifacts/fine_tune.json",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "prompt_template": {
+      "source": "in-house",
+      "version": "v11",
+      "path": "trustpack/provenance/artifacts/prompt_template.txt",
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    "guardrails": {
+      "source": "in-house",
+      "version": "v2",
+      "path": "trustpack/provenance/artifacts/guardrails.yaml",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  }
+}

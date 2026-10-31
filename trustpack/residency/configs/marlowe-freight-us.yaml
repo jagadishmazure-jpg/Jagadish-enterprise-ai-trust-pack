@@ -1,0 +1,15 @@
+# Fictional US customer that requires processing inside the United States geography.
+tenant: marlowe-freight
+boundary: {scope: geography, value: United States}
+allowed_regions: [eastus2, westus3]
+consent: {cross_region_fallback: true}
+data_classes:
+  prompts:    {region: eastus2, service: cosmos-db}
+  outputs:    {region: eastus2, service: cosmos-db}
+  logs:       {region: eastus2, service: log-analytics}
+  embeddings: {region: eastus2, service: ai-search}
+  caches:     {region: eastus2, service: redis}
+  backups:    {region: eastus2, replica_region: westus3, service: storage-grs}
+model_deployments:
+  - {name: chat-main, sku: Standard, region: eastus2, role: primary}
+  - {name: chat-spare, sku: ProvisionedManaged, region: westus3, role: fallback}

@@ -1,0 +1,4 @@
+name: tabletop-01 PII in a support answer (fictional tenant fernhollow-bank)
+kind: pii_in_output
+tenants_affected: 1
+timeline: {detect: 0, contain: 2.5, notify: 20, rca: 96}

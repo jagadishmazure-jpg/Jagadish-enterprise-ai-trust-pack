@@ -1,0 +1,5 @@
+name: tabletop-02 injected PDF exfiltrates via a link tool (fictional tenant marlowe-freight)
+kind: injection_exfiltration
+tenants_affected: 1
+ongoing: true
+timeline: {detect: 0, contain: 0.75, notify: 6, rca: 110}

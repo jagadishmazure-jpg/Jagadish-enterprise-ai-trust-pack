@@ -1,0 +1,11 @@
+# Previous published list. Template, not certified. Fictional vendor names except real tech platforms.
+version: "2026-08-01"
+subprocessors:
+  - {name: Microsoft Foundry Models, role: llm_provider, purpose: inference, region: swedencentral,
+     data_classes: [prompts, outputs], dpa_signed: true}
+  - {name: Microsoft Azure, role: cloud_host, purpose: compute and storage, region: swedencentral,
+     data_classes: [prompts, outputs, logs, embeddings, caches, backups], dpa_signed: true}
+  - {name: Azure AI Search, role: vector_db, purpose: retrieval, region: swedencentral,
+     data_classes: [embeddings], dpa_signed: true}
+  - {name: Tracewell Observability, role: observability, purpose: traces, region: swedencentral,
+     data_classes: [logs], dpa_signed: true}

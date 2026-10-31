@@ -1,0 +1,43 @@
+{
+  "displayName": "Allowed locations for resources that hold AI customer data",
+  "mode": "Indexed",
+  "parameters": {
+    "allowedLocations": {
+      "type": "Array",
+      "metadata": {
+        "displayName": "Allowed locations",
+        "strongType": "location"
+      }
+    },
+    "effect": {
+      "type": "String",
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Deny"
+    }
+  },
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "location",
+          "notIn": "[parameters('allowedLocations')]"
+        },
+        {
+          "field": "location",
+          "notEquals": "global"
+        },
+        {
+          "field": "tags['data-class']",
+          "exists": "true"
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  }
+}

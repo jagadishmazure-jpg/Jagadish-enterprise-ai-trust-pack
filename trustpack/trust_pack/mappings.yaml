@@ -1,0 +1,72 @@
+# Template, not certified. Control titles are short paraphrases, not the standards' text.
+# A mapping says "this repo has evidence relevant to this control"; it is not an audit opinion.
+frameworks:
+  soc2_tsc:
+    name: SOC 2 Trust Services Criteria (2017, revised points of focus 2022)
+    controls:
+      - {id: CC6.1, title: Logical access security over protected information, questions: [Q6],
+         evidence: [trustpack/isolation/tenancy.py]}
+      - {id: CC6.2, title: Granting and removing access, questions: [Q6], evidence: [trustpack/isolation/jit.py]}
+      - {id: CC6.3, title: Role-based and least-privilege access, questions: [Q6], evidence: [trustpack/isolation/jit.py]}
+      - {id: CC6.7, title: Restricting data movement to authorised parties and places, questions: [Q1, Q3],
+         evidence: [trustpack/residency/check.py, trustpack/subprocessors/registry.yaml]}
+      - {id: CC7.1, title: Detecting configuration changes and vulnerabilities, questions: [Q4, Q8],
+         evidence: [trustpack/provenance/manifest.py, trustpack/security_tests/hooks.py]}
+      - {id: CC7.3, title: Evaluating security events, questions: [Q7], evidence: [trustpack/incidents/engine.py]}
+      - {id: CC7.4, title: Responding to incidents, questions: [Q7], evidence: [trustpack/incidents/runbooks.yaml]}
+      - {id: CC8.1, title: Authorised, tested and documented changes, questions: [Q4],
+         evidence: [trustpack/provenance/manifest.json, trustpack/provenance/CHANGELOG.md]}
+      - {id: CC9.2, title: Vendor and business partner risk, questions: [Q3],
+         evidence: [trustpack/subprocessors/registry.py]}
+      - {id: C1.1, title: Identifying and protecting confidential information, questions: [Q2, Q6],
+         evidence: [trustpack/data_use/gateway.py, trustpack/isolation/tenancy.py]}
+      - {id: C1.2, title: Disposing of confidential information, questions: [Q5],
+         evidence: [trustpack/retention/engine.py, trustpack/retention/schedule.yaml]}
+      - {id: CC2.3, title: Communicating with external parties, questions: [Q9, Q3],
+         evidence: [trustpack/trust_pack/portal.py, trustpack/subprocessors/registry.py]}
+  iso27001_annex_a:
+    name: ISO/IEC 27001:2022 Annex A
+    controls:
+      - {id: A.5.12, title: Classification of information, questions: [Q1, Q2],
+         evidence: [trustpack/residency/configs/fernhollow-bank-eu.yaml, trustpack/data_use/policy.yaml]}
+      - {id: A.5.15, title: Access control, questions: [Q6], evidence: [trustpack/isolation/tenancy.py]}
+      - {id: A.5.19, title: Information security in supplier relationships, questions: [Q3],
+         evidence: [trustpack/subprocessors/registry.yaml]}
+      - {id: A.5.22, title: Monitoring and review of supplier services, questions: [Q3],
+         evidence: [trustpack/subprocessors/registry.py]}
+      - {id: A.5.23, title: Information security for use of cloud services, questions: [Q1],
+         evidence: [infra/terraform/main.tf, infra/bicep/main.bicep]}
+      - {id: A.5.24, title: Incident management planning and preparation, questions: [Q7],
+         evidence: [trustpack/incidents/runbooks.yaml]}
+      - {id: A.5.26, title: Response to information security incidents, questions: [Q7],
+         evidence: [trustpack/incidents/engine.py]}
+      - {id: A.5.27, title: Learning from information security incidents, questions: [Q7],
+         evidence: [trustpack/incidents/scenarios]}
+      - {id: A.5.34, title: Privacy and protection of PII, questions: [Q2, Q5],
+         evidence: [trustpack/data_use/gateway.py, trustpack/trust_pack/templates/dpia.md]}
+      - {id: A.8.2, title: Privileged access rights, questions: [Q6], evidence: [trustpack/isolation/jit.py]}
+      - {id: A.8.10, title: Information deletion, questions: [Q5], evidence: [trustpack/retention/engine.py]}
+      - {id: A.8.11, title: Data masking, questions: [Q2, Q8], evidence: [trustpack/security_tests/guard.py]}
+      - {id: A.8.15, title: Logging, questions: [Q6], evidence: [trustpack/common.py]}
+      - {id: A.8.29, title: Security testing in development and acceptance, questions: [Q8],
+         evidence: [trustpack/security_tests/cases, trustpack/security_tests/pentest_template.md]}
+      - {id: A.8.32, title: Change management, questions: [Q4], evidence: [trustpack/provenance/manifest.py]}
+      - {id: A.5.37, title: Documented operating procedures, questions: [Q9],
+         evidence: [trustpack/trust_pack/templates, docs/implementation-guide.md]}
+  iso42001_annex_a:
+    name: ISO/IEC 42001:2023 Annex A (control objective areas)
+    controls:
+      - {id: A.2, title: Policies related to AI, questions: [Q2], evidence: [trustpack/data_use/policy.yaml]}
+      - {id: A.3, title: Internal organisation and roles for AI, questions: [Q7], evidence: [trustpack/incidents/runbooks.yaml]}
+      - {id: A.4, title: Resources for AI systems (data, tools, compute), questions: [Q3, Q4],
+         evidence: [trustpack/subprocessors/registry.yaml, trustpack/provenance/manifest.json]}
+      - {id: A.5, title: Assessing impacts of AI systems, questions: [Q9], evidence: [trustpack/trust_pack/templates/dpia.md]}
+      - {id: A.6, title: AI system life cycle, questions: [Q4, Q8],
+         evidence: [trustpack/provenance/CHANGELOG.md, trustpack/security_tests/hooks.py]}
+      - {id: A.7, title: Data for AI systems, questions: [Q1, Q2, Q5],
+         evidence: [trustpack/residency/check.py, trustpack/data_use/gateway.py, trustpack/retention/schedule.yaml]}
+      - {id: A.8, title: Information for interested parties, questions: [Q9],
+         evidence: [trustpack/trust_pack/portal.py, trustpack/trust_pack/templates/model_card.md]}
+      - {id: A.9, title: Use of AI systems, questions: [Q6], evidence: [trustpack/isolation/tenancy.py]}
+      - {id: A.10, title: Third-party and customer relationships, questions: [Q3],
+         evidence: [trustpack/subprocessors/registry.py, trustpack/trust_pack/templates/dpa.md]}
