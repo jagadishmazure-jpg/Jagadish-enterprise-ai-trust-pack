@@ -1,4 +1,4 @@
-# The nine buyer questions (paraphrased) and where this repo keeps the evidence.
+# The nine buyer questions and where this repo keeps the evidence.
 questions:
   - id: Q1
     title: Data residency

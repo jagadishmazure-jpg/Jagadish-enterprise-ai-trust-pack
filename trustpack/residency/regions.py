@@ -18,7 +18,6 @@ REGIONS: dict[str, dict[str, str | None]] = {
 }
 
 # Microsoft Foundry deployment types -> SKU code -> where inferencing data may be processed.
-# Source: Microsoft Learn "Understanding deployment types in Microsoft Foundry Models" (paraphrased).
 DEPLOYMENT_TYPES: dict[str, str] = {
     "GlobalStandard": "global",
     "GlobalProvisionedManaged": "global",
